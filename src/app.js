@@ -1,15 +1,20 @@
 'use strict';
 
+import {run, config} from './core/features/app';
+
 export default require('angular')
-  .module('lazyApp', [
+  .module('app', [
+    // External
     require('angular-ui-router'),
-    // @TODO: It's a hack! https://github.com/ocombe/ocLazyLoad/issues/179
     (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
-    /*
-      uncomment to move msg-store to bundle.js only instead
-      of putting it in both: 3.bundle.js and 4.bundle.js
-     */
-    //require('commons/msg-store').name,
-    require('./pages/home/home.routing').name,
-    require('./pages/messages/messages.routing').name,
-  ]);
+
+    // Services
+    require('./commons/auth').name,
+
+    // Routes
+    require('./core/features/auth/auth.routing').name,
+    require('./core/features/home/home.routing').name,
+    require('./core/features/components/components.routing').name,
+  ])
+  .config(config)
+  .run(run);

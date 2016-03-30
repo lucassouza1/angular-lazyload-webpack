@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+<div class="panel-heading">
+Compoments
+</div>
+<div class="panel-body">
+  <h5>Basic compoments</h5>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label>Select</label>
+        <select
+          class="form-control"
+          ng-options="item.id as item.value for item in vm.model.list"
+          ng-model="vm.model.selected.select">
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -5,11 +5,12 @@ var config = {
   output: {
     path:     __dirname + '/build/',
     filename: 'bundle.js',
+    publicPath: '/build/'
   },
   resolve: {
-    root: __dirname + '/src/',
+    root: __dirname + '/src',
   },
-  module: {
+  module: {    
     noParse: [],
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'ng-annotate!babel' },
