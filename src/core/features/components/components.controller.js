@@ -3,7 +3,7 @@ class ComponentsCtrl {
     this.model = {
         list: [{
               id: 1,
-              value: 'value 1',
+              value: 'value 1 ',
               date: new Date(),
               number: 111.1
             }, {

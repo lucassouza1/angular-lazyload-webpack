@@ -5,7 +5,7 @@
   "scripts": {
     "start": "hs build",
     "build": "webpack -p",
-    "devs": "webpack-dev-server --progress --inline --content-base ./ --hot",
+    "devs": "webpack-dev-server --progress --inline --content-base build --hot",
     "test": "karma start test/karma.config.js"
   },
   "author": "Lucas Souza <lucassouza1@gmail.com>",

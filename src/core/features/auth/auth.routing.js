@@ -3,13 +3,13 @@ import createSimpleRoute from 'create-simple-route';
 const name = 'auth';
 
 const templateCallback = (resolve) => {
-  require.ensure([], () => resolve(require('core/features/auth/auth.html')));
+  require.ensure([], () => resolve(require('./auth.html')));
 }
 
 const controllerCallback = ($ocLazyLoad) => {
   return (resolve) => {
     require.ensure([], () => {
-        let module = require('core/features/auth/auth');
+        let module = require('./auth');
         $ocLazyLoad.load({name: module.name});
         resolve(module.controller);
       }
