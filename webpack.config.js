@@ -1,11 +1,12 @@
 var path = require('path');
+var basePath = path.join(__dirname, 'assets');
 
 var config = {
   entry: {
     app: ['./src/core/bootstrap.js'],
   },
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(basePath, 'js'),
     filename: 'bundle.js'
   },
   resolve: {
@@ -15,10 +16,11 @@ var config = {
     noParse: [],
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'ng-annotate!babel' },
+      { test: /\.json$/, loader: 'json'},
       { test: /\.html$/, loader: 'raw' },
     ]
   },
-  devtool: "sourcemap",
+  devtool: "source-map",
   debug: true
 };
 

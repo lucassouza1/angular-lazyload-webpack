@@ -1,4 +1,4 @@
-import createSimpleRoute from 'create-simple-route';
+import createSimpleModule from 'create-simple-module';
 
 const name = 'auth';
 
@@ -17,7 +17,7 @@ const controllerCallback = ($ocLazyLoad) => {
   }
 };
 
-let authModule = createSimpleRoute(name, templateCallback, controllerCallback);
+let authModule = createSimpleModule({name, templateCallback, controllerCallback});
 authModule.config(($stateProvider) => {
   $stateProvider.state('logout', {
     url: '/logout',

@@ -3,7 +3,7 @@ class AuthService {
     this.$q = $q;
     this.$rootScope = $rootScope;
 
-    this.$rootScope.loggedIn = false;
+    this.$rootScope.loggedIn = false;    
   }
 
   login(usename, password) {

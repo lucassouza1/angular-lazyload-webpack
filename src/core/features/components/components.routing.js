@@ -1,4 +1,4 @@
-import createSimpleRoute from 'create-simple-route';
+import createSimpleModule from 'create-simple-module';
 
 const name = 'components';
 
@@ -17,4 +17,4 @@ const controllerCallback = ($ocLazyLoad) => {
   }
 };
 
-export default createSimpleRoute(name, templateCallback, controllerCallback);
+export default createSimpleModule({name, templateCallback, controllerCallback});
