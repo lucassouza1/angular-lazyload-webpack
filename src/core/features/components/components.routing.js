@@ -3,7 +3,7 @@ import createSimpleModule from 'create-simple-module';
 const name = 'components';
 
 const templateCallback = (resolve) => {
-  require.ensure([], () => resolve(require('./components.html')));
+  require.ensure([], () => resolve(require('./components.html')), 'components');
 }
 
 const controllerCallback = ($ocLazyLoad) => {
@@ -12,8 +12,7 @@ const controllerCallback = ($ocLazyLoad) => {
         let module = require('./components');
         $ocLazyLoad.load({name: module.name});
         resolve(module.controller);
-      }
-    );
+      }, 'components');
   }
 };
 

@@ -3,7 +3,7 @@ import createSimpleModule from 'create-simple-module';
 const name = 'auth';
 
 const templateCallback = (resolve) => {
-  require.ensure([], () => resolve(require('./auth.html')));
+  require.ensure([], () => resolve(require('./auth.html')), 'auth');
 }
 
 const controllerCallback = ($ocLazyLoad) => {
@@ -12,8 +12,7 @@ const controllerCallback = ($ocLazyLoad) => {
         let module = require('./auth');
         $ocLazyLoad.load({name: module.name});
         resolve(module.controller);
-      }
-    );
+      }, 'auth');
   }
 };
 

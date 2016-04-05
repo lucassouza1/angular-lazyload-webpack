@@ -3,7 +3,7 @@ import createSimpleModule from 'create-simple-module';
 const name = 'home';
 
 const templateCallback = (resolve) => {
-  require.ensure([], () => resolve(require('./home.html')));
+  require.ensure([], () => resolve(require('./home.html')), 'home');
 }
 
 const controllerCallback = ($ocLazyLoad) => {
@@ -12,8 +12,7 @@ const controllerCallback = ($ocLazyLoad) => {
         let module = require('./home');
         $ocLazyLoad.load({name: module.name});
         resolve(module.controller);
-      }
-    );
+      }, 'home');
   }
 };
 

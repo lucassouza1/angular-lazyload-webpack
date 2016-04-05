@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var path = require('path');
 var basePath = path.join(__dirname, 'assets');
 
@@ -7,7 +8,8 @@ var config = {
   },
   output: {
     path: path.join(basePath, 'js'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js'
   },
   resolve: {
     root: path.join(__dirname, 'src'),
@@ -17,9 +19,12 @@ var config = {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'ng-annotate!babel' },
       { test: /\.json$/, loader: 'json'},
-      { test: /\.html$/, loader: 'raw' },
+      { test: /\.html$/, loader: 'raw' }      
     ]
   },
+  plugins: [
+		new webpack.optimize.DedupePlugin()
+	],
   devtool: "source-map",
   debug: true
 };

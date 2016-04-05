@@ -9,7 +9,7 @@ class PermissionService {
     return this.$q((resolve) => {      
       let permissions = ['auth'];
       permissions.push('home');
-      // permissions.push('components');
+      permissions.push('components');
       
       resolve(permissions);
     });
