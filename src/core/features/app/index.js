@@ -19,7 +19,7 @@ export function run(
   $rootScope.setLanguage = setLanguage; 
     
   localize.addResource((lang) => {
-    return require('promise?bluebird,[name]!commons/i18n/resources_'+ lang + '.json')
+    return require('commons/i18n/resources_'+ lang + '.json')
   });
   loadAngularLocale(defaultLanguage, $rootScope.setLanguage, true);
     
@@ -31,7 +31,7 @@ export function run(
   }  
     
   function loadAngularLocale(lang, callback, force)  {
-    require('bundle?name=[name]!angular-i18n/'+ lang + '.js')(() => {                        
+    require('angular-i18n/angular-locale_'+ lang + '.js')(() => {                        
       if (!tmhDynamicLocaleCache.get(lang)) {
         let localInjector = angular.injector(['ngLocale']),
             externalLocale = localInjector.get('$locale');

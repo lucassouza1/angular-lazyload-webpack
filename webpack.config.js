@@ -1,4 +1,5 @@
-var webpack = require('webpack');
+var ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
+
 var path = require('path');
 var basePath = path.join(__dirname, 'assets');
 
@@ -17,13 +18,15 @@ var config = {
   module: {    
     noParse: [],
     loaders: [
+      { test: /angular-i18n\/angular-locale_.*\.js/, loader: 'bundle?name=[name]'},
       { test: /\.js$/, exclude: /node_modules/, loader: 'ng-annotate!babel' },
+      { test: /resources_.*\.json$/, loader: 'promise?bluebird,[name]'},      
       { test: /\.json$/, loader: 'json'},
-      { test: /\.html$/, loader: 'raw' }      
+      { test: /\.html$/, loader: 'raw' },
     ]
   },
   plugins: [
-		new webpack.optimize.DedupePlugin()
+    new ContextReplacementPlugin(/angular\-i18n$/, /^\.\/(en|es|pt)$/)
 	],
   devtool: "source-map",
   debug: true
